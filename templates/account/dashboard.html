@@ -1,0 +1,239 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block style %}
+<style type="text/css">
+  body{
+    background-color:#38424e;
+  }
+</style>
+{% endblock %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+<div class="row">
+	<div class="col-sm-2"></div>
+	<div class="col-sm-8">
+		<div class="row dashboard">
+			<div class="col-sm-4">
+	  		<img src="/media/{{ profile.photo }}" height="265px" style="max-width: 320px;">
+	  		</div>
+	  		<div class="col-sm-offset-1 col-sm-7 profile">
+	  			<h3>{{ profile.user.first_name }}</h3>
+	  			<hr class="line">
+	  			<p>Name 	: <strong>{{ profile.user.first_name }}</strong></p>
+	  			<p>Email	: <strong>{{ profile.user.email }}</strong></p>
+	  			<p>Phone	: <strong>{{ profile.phone }}</strong></p>
+	  			<p>Location : <strong>{{ profile.location }}</strong></p>
+	  		</div>
+	  		<!-- Trigger the modal with a button -->
+			<a href="{% url "edit" %}" type="button" class="btn my-btn">Edit Profile</a>
+		</div>
+
+	<div class="row dashboard2">
+	<div class="col-sm-12">
+		<h3>Welcome to your Dashboard</h3>
+		<hr class="line">
+		
+	<ul class="nav nav-tabs">
+	  <li class="active"><a data-toggle="tab" href="#home">MyShares</a></li>
+	  <li><a data-toggle="tab" href="#menu1">Messages <span class="label label-danger"></span></a></li>
+	 
+	  <li><a data-toggle="tab" href="#menu2">History</a></li>
+	</ul>
+
+	<div class="tab-content">
+	  <div id="home" class="tab-pane fade in active">
+	    <h4>MyShares</h4>
+	    <br>
+	    {% for item in item_list %}
+	    <div class="row my-panel">
+	    	<div class="col-sm-3">
+	    	<img src="/media/{{ item.cover }}" width="80px" height="50px">
+	    	</div>
+	    	<div class="col-sm-3"><h4 class="text-center">{{ item.title }} <small>for :{{ item.status }}</small></h4></div>
+	    	<div class="col-sm-3"><h4 class="text-center">{{ item.item }}</h4></div>
+	    	<div class="col-sm-3">
+	    		<a type="button" class="btn btn-info" data-toggle="modal" data-target="#editshare">Edit</a>
+	    		<button type="button" class="btn btn-danger">Delete</button>
+	    	</div>
+	    </div>
+	    {% endfor %}
+
+	    <!-- Modal -->
+		<div id="editshare" class="modal fade" role="dialog">
+		  <div class="modal-dialog">
+
+		    <!-- Modal content-->
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal">&times;</button>
+		        <h4 class="modal-title">Add item to your list</h4>
+		      </div>
+		      <div class="modal-body">
+		         <form method="post" enctype="multipart/form-data" class="form-horizontal" role="form">
+				  <div class="form-group">
+				    <label class="control-label col-sm-2" for="name">Title:</label>
+				    <div class="col-sm-10">
+				      <input type="text" class="form-control" id="title" placeholder="Enter Title">
+				    </div>
+				  </div>
+				 <div class="form-group">
+				    <label class="control-label col-sm-2" for="file">Cover</label>
+				    <div class="col-sm-10">
+				      <input type="file" class="form-control" id="cover">
+				    </div>
+				  </div>
+				   <div class="form-group">
+					  <label class="control-label col-sm-2" for="sel1">Category:</label>
+					  <div class="col-sm-10">
+					  <select class="form-control" id="category">
+					    <option>Book</option>
+					    <option>Movie</option>
+					    <option>Data</option>
+					    <option>Other</option>
+					  </select>
+					</div>
+					</div>
+					<div class="form-group">
+					  <label class="control-label col-sm-2" for="sel1">For :</label>
+					  <div class="col-sm-10">
+					  <select class="form-control" id="status">
+					    <option>Rent</option>
+					    <option>Share</option>
+					    <option>Give</option>
+					  </select>
+					</div>
+					</div>
+					<div class="form-group">
+					  <label class="control-label col-sm-2" for="sel1">Link</label>
+					  <div class="col-sm-10">
+					    <input type="text" class="form-control" id="link">
+					</div>
+					</div>
+					<div class="form-group">
+					  <label class="control-label col-sm-2" for="comment">Description:</label>
+					  <div class="col-sm-10">
+					  	  <textarea class="form-control" rows="5" id="descirption"></textarea>
+					  </div>
+					</div>
+				  <div class="form-group">
+				    <div class="col-sm-offset-2 col-sm-10">
+				      <button type="submit" class="btn my-btn" id="add_item">Save Changes</button>
+				    </div>
+				  </div>
+				  {% csrf_token %}
+				</form>
+		      </div>
+		    </div>
+
+		  </div>
+		</div>
+	   
+	    
+	  </div>
+	  <div id="menu1" class="tab-pane fade">
+	    <h3>Messages</h3>
+	    <p>Some content in menu 1.</p>
+	  </div>
+	  <div id="menu2" class="tab-pane fade">
+	    <h3>History</h3>
+	    <div class="alert alert-info">
+	    	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  			<strong>12-3-19 : </strong>You borrow a book <strong>Finicial Diet </strong>from <strong>James William</strong>.
+		</div>
+		<div class="alert alert-info">
+	    	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  			<strong>12-3-19 : </strong>You borrow a book <strong>Finicial Diet </strong>from <strong>James William</strong>.
+		</div>
+		<div class="alert alert-info">
+	    	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  			<strong>12-3-19 : </strong>You borrow a book <strong>Finicial Diet </strong>from <strong>James William</strong>.
+		</div>
+		<div class="alert alert-info">
+	    	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  			<strong>12-3-19 : </strong>You borrow a book <strong>Finicial Diet </strong>from <strong>James William</strong>.
+		</div>
+	  </div>
+	</div>
+	</div>
+</div>
+
+<div class="add_button">
+	<a type="button" data-toggle="modal" data-target="#editshare">+</a>
+</div>
+
+</div>
+<div class="col-sm-2"></div>
+</div>
+</div>
+
+{% endblock %}
+
+{% block javascript %}
+<script>
+	
+	//For getting CSRF token
+		function getCookie(name) {
+          var cookieValue = null;
+          if (document.cookie && document.cookie != '') {
+                var cookies = document.cookie.split(';');
+          for (var i = 0; i < cookies.length; i++) {
+               var cookie = jQuery.trim(cookies[i]);
+          // Does this cookie string begin with the name we want?
+          if (cookie.substring(0, name.length + 1) == (name + '=')) {
+            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+              break;
+             }
+          }
+      }
+ return cookieValue;
+}
+$.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+        if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+            // Only send the token to relative URLs i.e. locally.
+            xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+        }
+    }
+});
+
+	// for doing Ajax post
+
+	// When submit is click
+	$("form#data").click(function(e){
+
+		// prevent default submit. Must for Ajax post. Beginner's pit.
+		e.preventDefault();
+
+		// prepare csrf token
+		var csrftoken = getCookie('csrftoken');
+
+		// collect data from fields
+		var formData = new FormData(this);
+
+		// send data
+		$.ajax({
+			url : "/account/dashboard/post_item/", // the endpoint, commonly same url
+			type: "POST", // http method
+			data: formData,		// data sent with the post request
+
+			// handle a successful response
+			success : function(json){
+				alert('Hi '+ json['title'])
+				console.log(json); // another sanity check
+				// on success, show the data posted on server as message
+			},
+
+			// handle a non successful response
+			error : function(xhr, errmsg, err){
+				console.log(xhr.status + ": " + xhr.responseText);
+			}
+
+		});
+	});
+</script>
+
+{% endblock %}

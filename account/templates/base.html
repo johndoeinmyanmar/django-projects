@@ -1,0 +1,242 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>{% block title %}{% endblock %}</title>
+<link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
+<script type="text/javascript" src="{% static "js/jquery.min.js" %}"></script>
+
+<style type="text/css">
+	.navbar{
+		border-radius: 0;
+		background-color:#4b6060;
+		border:none;
+		margin-bottom: 0;
+		font-size: 15px;
+		font-weight: bold;
+		letter-spacing:2px;
+		padding-right: 20px;
+	}
+	.navbar li a, .navbar .navbar-brand, .navbar-nav li a {
+		color: #09f9c6 !important;
+		font-family: 'Ubuntu', sans-serif;
+	}
+	.navbar-nav li a:hover, .navbar-nav li.active a {
+		color: teal !important;
+		background-color: #fff !important;
+	}
+
+	.dashboard{
+		background-color: white;
+		height: auto;
+		border-radius: 5px;
+		margin-top: 100px;
+		margin-bottom: 50px;
+	}
+	.dashboard2{
+		background-color: white;
+		height: auto;
+		border-radius: 5px;
+		margin-top: 50px;
+		margin-bottom: 50px;
+		padding:10px 10px;
+	}
+	.line{
+		background-color: teal;
+		height: 1px;
+	}
+	.profile{
+		text-align: left;
+
+	}
+	.my-btn{
+		float: right;
+		margin-right: 20px;
+		color:white;
+		background-color: teal;
+		margin-bottom: 20px;
+	}
+	.my-btn:hover{
+		background-color:#005580;
+		color:white;
+	}
+
+	.my-form{
+		background-color:#fff;
+		margin-top: 150px;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.9);
+		border-radius: 5px;
+		padding: 10px 50px;
+		color:#115004;
+	}
+	.my-form input{
+		background-color: white;
+		border:none;
+		border-bottom:1px solid #11aae6;
+	}
+	.my-form h1{
+		border-bottom: 1px solid teal;
+		padding-bottom: 20px;
+		font-weight: bold;
+		font-size: 2em;
+		color:teal;
+	}
+	.my-form p{
+		padding-top: 20px;
+		padding-bottom: 20px;
+		font-size: 15px;
+	}
+	.my-btn{
+		background-color: teal;
+		color:white;
+		border:none;
+	}
+	.jumbotron {
+    background-color: teal; /* Orange */
+    color: #ffffff;
+    top: 0px;
+	}
+	
+	.add_button{
+	    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+		width: 50px;
+		height: 50px;
+		background-color:#04a116;
+		border-radius: 50%;
+		position: fixed;
+		bottom: 50px;
+		padding-left: 17px;
+		right: 250px;
+		cursor: pointer;
+	
+	}
+	.add_button a{
+		color:white;
+		font-size: 30px;
+		text-decoration: none;
+
+	}
+	 #section2{
+      background-color: #448476;
+      padding:80px 120px;
+      color:white;
+    }
+    footer{
+  background-color:#263c38;
+  height: 100px;
+  color:white;
+  font-size: 15px;
+  padding: 10px;
+}
+
+footer p a{
+	color:#3fce91;
+}
+  	@media only screen and (max-width: 480px){
+	.jumbotron{
+		height: 350px;
+	}
+	.jumbotron h1{
+	font-size: 25px;
+	font-weight:bold;
+	}
+	.jumbotron p{
+		font-size: 15px;
+	}
+	#section1 h2{
+		font-size: 15px;
+	}
+   #section2{
+	padding: 20px 20px;
+	background-color: #1e5f65;
+	color:#fff;
+	}
+    .input-group{
+		  width: 250px;
+		  margin:auto;
+		  padding-right: 10px;
+	}
+	.add_button{
+		width: 50px;
+		height: 50px;
+		background-color: teal;
+		border-radius: 50%;
+		position: fixed;
+		bottom: 50px;
+		padding-left: 17px;
+		left: 220px;
+		cursor: pointer;
+	
+	}
+
+    }
+
+</style>
+	{% block style %}{% endblock %}
+	<link href="https://fonts.googleapis.com/css?family=Gugi|Orbitron" rel="stylesheet"> 
+	<link href="https://fonts.googleapis.com/css?family=Gamja+Flower" rel="stylesheet"> 
+	<link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet"> 
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset=50>
+ <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{% url "homepage" %}">CampusShare</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      {% if request.user.is_authenticated %}
+      <ul class="nav navbar-nav">
+        <li {% if section == 'dashboard' %}class="active"{% endif %}><a href="{% url "dashboard" %}">Dashboard</a></li>
+        <li><a href="{% url 'homepage' %}">Home</a></li>
+        <li><a href="#section1">Items</a></li>
+        <li><a href="#section2">About</a></li>
+        <li><a href="#section3">Contact</a></li>
+      </ul>
+      {% endif %}
+      <ul class="nav navbar-nav navbar-right">
+      	{% if request.user.is_authenticated %}
+        <li><a href="{% url "dashboard" %}"><span class="glyphicon glyphicon-user"></span>{{ request.user.first_name }}</a></li>
+        <li><a href="{% url "logout" %}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        {% else %}
+        <li><a href="{% url "register" %}"><span class="glyphicon glyphicon-sign-up"></span> Register</a></li>
+        <li><a href="{% url "login" %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        {% endif %}
+      </ul>
+    </div>
+</nav>
+
+	{% if messages %}
+	{% for message in messages %}
+	<div class="alert alert-info" style="margin-top: 50px;">
+ 		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  		<strong>{{ message.tags }}</strong>{{ message|safe }}
+	</div>
+	{% endfor %}
+	{% endif %}
+{% block content %}
+
+{% endblock %}
+<script>
+	window.setTimeout(function() {
+    $(".alert-info").fadeTo(500, 0).slideUp(500, function(){
+        $(this).remove(); 
+    });
+}, 4000);
+</script>
+{% block script %}
+{% endblock %}
+<script type="text/javascript" src="{% static "js/bootstrap.min.js" %}"></script>
+{% block javascript %}{% endblock %}
+</body>
+<footer class="container-fluid text-center">
+  <a href="#myPage" title="To Top">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a>
+  <p>&copy; copyright 2018. All right reserved. <a href="../index.html" title="CampusShare">www.campusshare.com</a></p>		
+</footer>
+</html>

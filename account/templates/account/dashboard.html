@@ -1,0 +1,246 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block style %}
+<style type="text/css">
+  body{
+    background-color:#38424e;
+  }
+  h3{
+  	font-family: 'Ubuntu', sans-serif;
+
+  }
+  .profile p{
+  	font-family: 'PT Sans Narrow', sans-serif;
+  	font-size: 15px;
+
+  }
+  
+  .btn-edit{
+  	margin-top: 20px;
+  	background-color: teal;
+  	color:white;
+  }
+  .btn-delete{
+  	margin-top: 20px;
+  	background-color:#ff383f;
+  	color:white;
+  }
+  .item-card{
+		background-color:#e1e9ea;
+		height: 80px;
+		margin-bottom: 20px;
+	}
+
+  
+  .item-card p{
+  	font-family: 'PT Sans Narrow', sans-serif;
+    margin-left: 20px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	color:#256b77;
+	font-size: 17px;
+	display: inline;
+	
+}
+	.item-card a{
+		float: right;
+		margin-right: 10px;
+	}
+@media only screen and (max-width: 480px){
+	.btn-edit{
+		font-size: 10px;
+  		margin-bottom: 10px;
+  }
+  	.btn-delete{
+  		font-size: 10px;
+  		margin-bottom: 10px;
+  }
+  .item-card img{
+  	float: left;
+  }
+  .item-card p{
+  	font-size: 10px;
+  	margin-left: 100px;
+  	margin-bottom:0;
+  	line-height: 10px;
+  	display: block;
+  	margin-right: 5px;
+
+
+  }
+  .item-card{
+  	height: 100px;
+  	padding-top: 10px;
+  }
+  .item-card a{
+  	margin-top:10px;
+  	margin-right: 10px;
+  }
+}
+</style>
+{% endblock %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+<div class="row">
+	<div class="col-sm-2"></div>
+	<div class="col-sm-8">
+		<div class="row dashboard">
+			<div class="col-sm-4">
+			{% if profile.photo %}
+	  		<img src="/media/{{ profile.photo }}" height="265px" style="max-width: 320px;">
+	  		{% else %}
+	  		<img src="/static/img/avatar3.png" height="265px" style="max-width: 320px;">
+	  		{% endif %}
+	  		</div>
+	  		<div class="col-sm-offset-1 col-sm-7 profile">
+	  			<h3>{{ profile.user.first_name }}</h3>
+	  			<hr class="line">
+	  			<p>Name 	: <strong>{{ profile.user.first_name }}</strong></p>
+	  			<p>Email	: <strong>{{ profile.user.email }}</strong></p>
+	  			<p>Phone	: <strong>{{ profile.phone }}</strong></p>
+	  			<p>Location : <strong>{{ profile.location }}</strong></p>
+	  		</div>
+	  		<!-- Trigger the modal with a button -->
+			<a href="{% url "edit" %}" type="button" class="btn my-btn">Edit Profile</a>
+		</div>
+
+	<div class="row dashboard2">
+	<div class="col-sm-12">
+		<h3>Welcome to your Dashboard</h3>
+		<hr class="line">
+		
+	<ul class="nav nav-tabs">
+	  <li class="active"><a data-toggle="tab" href="#home">Items</a></li>
+	  <li><a data-toggle="tab" href="#menu2">History <span class="label label-danger"></span></a></li>
+	</ul>
+
+	<div class="tab-content">
+	  <div id="home" class="tab-pane fade in active">
+	    <h4>My Shared Items</h4>
+	    <br>
+
+	    
+	    	
+	    {% for item in item_list %}
+	   		<div class="item-card">
+	   			{% if item.cover %}
+	    		<img src="/media/{{ item.cover }}" width="80px" height="80px"></td>
+	    	    {% else %}
+	    	    <img src="/static/img/{{ item.item }}.png" width="80px" height="80px"></td>
+	    	    {% endif %}
+	    	    <strong><p class="text-center">{{ item.title }}</p></strong>
+	    		<p class="text-center">{{ item.item }}</p>
+	    		<p class="text-center">for : {{ item.status }}</p>
+	  
+	    		<a type="button" class="btn btn-edit" href="/account/dashboard/{{ item.slug }}/edit">Edit</a>
+	    		<a type="button" class="btn btn-delete" href="/account/dashboard/{{ item.slug }}/delete">Delete</a>
+	    	</div>	    	
+	    {% endfor %}
+	    
+	   
+	    
+	  </div>
+
+	  <div id="menu2" class="tab-pane fade">
+	    <h3>History</h3>
+	    <div class="alert alert-success">
+	    	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  			<strong>12-3-19 : </strong>You borrow a book <strong>Finicial Diet </strong>from <strong>James William</strong>.
+		</div>
+		<div class="alert alert-success">
+	    	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  			<strong>12-3-19 : </strong>You borrow a book <strong>Finicial Diet </strong>from <strong>James William</strong>.
+		</div>
+		<div class="alert alert-success">
+	    	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  			<strong>12-3-19 : </strong>You borrow a book <strong>Finicial Diet </strong>from <strong>James William</strong>.
+		</div>
+		<div class="alert alert-success">
+	    	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  			<strong>12-3-19 : </strong>You borrow a book <strong>Finicial Diet </strong>from <strong>James William</strong>.
+		</div>
+	  </div>
+	</div>
+	</div>
+</div>
+
+<div class="add_button">
+	<a type="button" href="{% url 'share' %}">+</a>
+</div>
+
+</div>
+<div class="col-sm-2"></div>
+</div>
+</div>
+
+{% endblock %}
+
+{% block javascript %}
+<script>
+	
+	//For getting CSRF token
+		function getCookie(name) {
+          var cookieValue = null;
+          if (document.cookie && document.cookie != '') {
+                var cookies = document.cookie.split(';');
+          for (var i = 0; i < cookies.length; i++) {
+               var cookie = jQuery.trim(cookies[i]);
+          // Does this cookie string begin with the name we want?
+          if (cookie.substring(0, name.length + 1) == (name + '=')) {
+            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+              break;
+             }
+          }
+      }
+ return cookieValue;
+}
+$.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+        if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+            // Only send the token to relative URLs i.e. locally.
+            xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+        }
+    }
+});
+
+	// for doing Ajax post
+
+	// When submit is click
+	$("form#data").click(function(e){
+
+		// prevent default submit. Must for Ajax post. Beginner's pit.
+		e.preventDefault();
+
+		// prepare csrf token
+		var csrftoken = getCookie('csrftoken');
+
+		// collect data from fields
+		var formData = new FormData(this);
+
+		// send data
+		$.ajax({
+			url : "/account/dashboard/post_item/", // the endpoint, commonly same url
+			type: "POST", // http method
+			data: formData,		// data sent with the post request
+
+			// handle a successful response
+			success : function(json){
+				alert('Hi '+ json['title'])
+				console.log(json); // another sanity check
+				// on success, show the data posted on server as message
+			},
+
+			// handle a non successful response
+			error : function(xhr, errmsg, err){
+				console.log(xhr.status + ": " + xhr.responseText);
+			}
+
+		});
+	});
+</script>
+
+{% endblock %}

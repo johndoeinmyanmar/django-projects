@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block style %}
+<style type="text/css">
+  .bg-grey{
+    background: linear-gradient(rgba(20, 20, 20, .5),rgba(20, 20, 20, .5)),url("{% static "img/ytu1.jpg" %}");
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 720px;
+      margin-bottom: 0;
+  }
+</style>
+{% endblock %}
+
+{% block title %}Edit your account{% endblock %}
+
+{% block content %}
+<dir class="container-fluid bg-grey">
+
+<div class="row">
+<div class="col-sm-3"></div>
+<div class="col-sm-6">
+<div class="my-form">
+	<h1>Edit your account</h1>
+	<p>You can edit your account using the following form</p>
+<form action="." method="post" enctype="multipart/form-data" class="form-horizontal" role="form">
+  <div class="form-group">
+    <label class="control-label col-sm-4" for="name">Name:</label>
+    <div class="col-sm-6">
+      {{ user_form.first_name }}
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-4" for="email">Email:</label>
+    <div class="col-sm-6">
+      {{ user_form.email }}
+    </div>
+  </div>
+    <div class="form-group">
+    <label class="control-label col-sm-4" for="photo">Cover photo:</label>
+    <div class="col-sm-6">
+      {{ profile_form.photo }}
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-4" for="">Phone:</label>
+    <div class="col-sm-6">
+      {{ profile_form.phone }}
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-4" for="">Location:</label>
+    <div class="col-sm-6">
+      {{ profile_form.location }}
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-4 col-sm-6">
+      <button type="submit" class="btn my-btn"> Save Changes </button>
+    </div>
+  </div>
+  {% csrf_token %}
+</form>
+</div>
+</div>
+<div class="col-sm-3"></div>
+</div>
+</dir>
+{% endblock %}

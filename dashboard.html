@@ -1,0 +1,337 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dashboard</title>
+	<link rel="stylesheet" type="text/css" href="{% static "css/bootstrap.css" %}">
+</head>
+<style type="text/css">
+	body{
+		background-color: #425459;
+	}
+	.navbar{
+	border-radius: 0;
+	background-color: teal;
+	border:none;
+	margin-bottom: 0;
+	font-size: 15px;
+	font-weight: bold;
+	letter-spacing:2px;
+	padding-right: 20px;
+	}
+	.navbar li a, .navbar .navbar-brand {
+	color: #fff !important;
+	}
+	.navbar-nav li a:hover, .navbar-nav li.active a {
+	color: teal !important;
+	background-color: #fff !important;
+	}
+	.dashboard{
+		background-color: white;
+		height: auto;
+		border-radius: 5px;
+		margin-top: 100px;
+		margin-bottom: 50px;
+	}
+	.dashboard2{
+		background-color: white;
+		height: auto;
+		border-radius: 5px;
+		margin-top: 50px;
+		margin-bottom: 50px;
+		padding:10px 10px;
+	}
+	.line{
+		background-color: teal;
+		height: 1px;
+	}
+	.profile{
+		text-align: left;
+
+	}
+	.my-btn{
+		float: right;
+		margin-right: 20px;
+		color:white;
+		background-color: teal;
+		margin-bottom: 20px;
+	}
+	.my-btn:hover{
+		background-color:#005580;
+		color:white;
+	}
+	.my-panel{
+		background-color: lightgrey;
+		border-radius: 5px;
+		padding:5px 5px;
+		margin-bottom: 20px;
+	}
+	.col-sm-3 button{
+		margin-top: 10px;
+		margin-bottom: 10px;
+		margin-right: 20px;
+	}
+	.col-sm-3 h4{
+		padding-top: 5px;
+		padding-bottom: 5px;
+		color: teal;
+		
+	}
+	
+</style>
+<body>
+ <nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">CampusShare</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Dashboard</a></li>
+        <li><a href="#">Items</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+<div class="row">
+	<div class="col-sm-2"></div>
+	<div class="col-sm-8">
+
+	<div class="row dashboard">
+		<div class="col-sm-4">
+  		<img src="static/img/avatar1.png" height="265px">
+  		</div>
+  		<div class="col-sm-offset-1 col-sm-7 profile">
+  			<h3>John Doe</h3>
+  			<hr class="line">
+  			<p>Name 	: <strong>John Doe</strong></p>
+  			<p>Email	: <strong>johndoe@gmail.com</strong></p>
+  			<p>Phone	: <strong>09234423232</strong></p>
+  			<p>Location : <strong>Insein, Yangon</strong></p>
+  		</div>
+  		<!-- Trigger the modal with a button -->
+		<button type="button" class="btn my-btn" data-toggle="modal" data-target="#profileModal">Edit Profile</button>
+	</div>
+
+		<!-- Modal -->
+		<div id="profileModal" class="modal fade" role="dialog">
+		  <div class="modal-dialog">
+
+		    <!-- Modal content-->
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal">&times;</button>
+		        <h4 class="modal-title">Edit your profile information</h4>
+		      </div>
+		      <div class="modal-body">
+		         <form action="." method="post" class="form-horizontal" role="form">
+				  <div class="form-group">
+				    <label class="control-label col-sm-2" for="email">Name:</label>
+				    <div class="col-sm-10">
+				      {{ user_form.first_name }}
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label class="control-label col-sm-2" for="email">Cover</label>
+				    <div class="col-sm-10">
+				      {{ profile_form.photo }}
+				    </div>
+				  </div>
+				 <div class="form-group">
+				    <label class="control-label col-sm-2" for="email">Email:</label>
+				    <div class="col-sm-10">
+				      {{ user_form.email }}
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label class="control-label col-sm-2" for="email">Phone:</label>
+				    <div class="col-sm-10">
+				      {{ profile_form.phone }}
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label class="control-label col-sm-2" for="email">Location:</label>
+				    <div class="col-sm-10">
+				      {{ profile_form.location }}
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <div class="col-sm-offset-2 col-sm-10">
+				      <button type="submit" class="btn my-btn">Save Changes</button>
+				    </div>
+				  </div>
+				</form>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+
+		  </div>
+		</div>
+
+	<div class="row dashboard2">
+	<div class="col-sm-12">
+		<h3>Welcome to your Dashboard</h3>
+		<hr class="line">
+		<br>
+	<ul class="nav nav-tabs">
+	  <li class="active"><a data-toggle="tab" href="#home">MyShares</a></li>
+	  <li><a data-toggle="tab" href="#menu1">Messages <span class="label label-danger">5</span></a></li>
+	  <li><a data-toggle="tab" href="#menu2">History</a></li>
+	</ul>
+
+	<div class="tab-content">
+	  <div id="home" class="tab-pane fade in active">
+	    <h4>MyShares</h4>
+	    <br>
+	    <div class="row my-panel">
+	    	<div class="col-sm-3">
+	    	<img src="static/img/bus2.jpg" width="80px" height="50px">
+	    	</div>
+	    	<div class="col-sm-3"><h4 class="text-center">Art of human hacking</h4></div>
+	    	<div class="col-sm-3"><h4 class="text-center">Book</h4></div>
+	    	<div class="col-sm-3">
+	    		<button type="button" class="btn btn-info" data-toggle="modal" data-target="#editshare">Edit</button>
+	    		<button type="button" class="btn btn-danger">Delete</button>
+	    	</div>
+	    </div>
+
+	    <!-- Modal -->
+		<div id="editshare" class="modal fade" role="dialog">
+		  <div class="modal-dialog">
+
+		    <!-- Modal content-->
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal">&times;</button>
+		        <h4 class="modal-title">Edit item information</h4>
+		      </div>
+		      <div class="modal-body">
+		         <form class="form-horizontal" role="form">
+				  <div class="form-group">
+				    <label class="control-label col-sm-2" for="email">Title:</label>
+				    <div class="col-sm-10">
+				      <input type="email" class="form-control" id="email" placeholder="Enter item title">
+				    </div>
+				  </div>
+				 <div class="form-group">
+				    <label class="control-label col-sm-2" for="email">Cover</label>
+				    <div class="col-sm-10">
+				      <input type="file" data="multipart/form-data">
+				    </div>
+				  </div>
+				   <div class="form-group">
+					  <label class="control-label col-sm-2" for="sel1">Category:</label>
+					  <div class="col-sm-10">
+					  <select class="form-control" id="sel1">
+					    <option>Book</option>
+					    <option>Movie</option>
+					    <option>Others</option>
+					  </select>
+					</div>
+					</div>
+					<div class="form-group">
+					  <label class="control-label col-sm-2" for="comment">Description:</label>
+					  <div class="col-sm-10">
+					  <textarea class="form-control" rows="5" id="comment"></textarea>
+					</div>
+					</div>
+				  <div class="form-group">
+				    <div class="col-sm-offset-2 col-sm-10">
+				      <button type="submit" class="btn my-btn">Save Changes</button>
+				    </div>
+				  </div>
+				</form>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+
+		  </div>
+		</div>
+
+	    <div class="row my-panel">
+	    	<div class="col-sm-3">
+	    	<img src="static/img/bus2.jpg" width="80px" height="50px">
+	    	</div>
+	    	<div class="col-sm-3"><h4 class="text-center">Art of human hacking</h4></div>
+	    	<div class="col-sm-3"><h4 class="text-center">Book</h4></div>
+	    	<div class="col-sm-3">
+	    		<button type="button" class="btn btn-info">Edit</button>
+	    		<button type="button" class="btn btn-danger">Delete</button>
+	    	</div>
+	    </div>
+	    <div class="row my-panel">
+	    	<div class="col-sm-3">
+	    	<img src="static/img/bus2.jpg" width="80px" height="50px">
+	    	</div>
+	    	<div class="col-sm-3"><h4 class="text-center">Art of human hacking</h4></div>
+	    	<div class="col-sm-3"><h4 class="text-center">Book</h4></div>
+	    	<div class="col-sm-3">
+	    		<button type="button" class="btn btn-info">Edit</button>
+	    		<button type="button" class="btn btn-danger">Delete</button>
+	    	</div>
+	    </div>
+	    <div class="row my-panel">
+	    	<div class="col-sm-3">
+	    	<img src="static/img/bus2.jpg" width="80px" height="50px">
+	    	</div>
+	    	<div class="col-sm-3"><h4 class="text-center">Art of human hacking</h4></div>
+	    	<div class="col-sm-3"><h4 class="text-center">Book</h4></div>
+	    	<div class="col-sm-3">
+	    		<button type="button" class="btn btn-info">Edit</button>
+	    		<button type="button" class="btn btn-danger">Delete</button>
+	    	</div>
+	    </div>
+	    
+	  </div>
+	  <div id="menu1" class="tab-pane fade">
+	    <h3>Messages</h3>
+	    <p>Some content in menu 1.</p>
+	  </div>
+	  <div id="menu2" class="tab-pane fade">
+	    <h3>History</h3>
+	    <div class="alert alert-info">
+	    	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  			<strong>12-3-19 : </strong>You borrow a book <strong>Finicial Diet </strong>from <strong>James William</strong>.
+		</div>
+		<div class="alert alert-info">
+	    	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  			<strong>12-3-19 : </strong>You borrow a book <strong>Finicial Diet </strong>from <strong>James William</strong>.
+		</div>
+		<div class="alert alert-info">
+	    	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  			<strong>12-3-19 : </strong>You borrow a book <strong>Finicial Diet </strong>from <strong>James William</strong>.
+		</div>
+		<div class="alert alert-info">
+	    	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  			<strong>12-3-19 : </strong>You borrow a book <strong>Finicial Diet </strong>from <strong>James William</strong>.
+		</div>
+	  </div>
+	</div>
+	</div>
+</div>
+
+	<div class="col-sm-2"></div>
+</div>	
+</div>
+
+<script type="text/javascript" src="{% static "js/jquery.min.js" %}"></script>
+<script type="text/javascript" src="{% static "js/bootstrap.min.js" %}"></script>
+</body>
+</html>

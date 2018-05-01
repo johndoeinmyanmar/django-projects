@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dashboard</title>
+	<link rel="stylesheet" type="text/css" href="static/css/bootstrap.css">
+
+</head>
+<style type="text/css">
+	body{
+		background-color:white;
+	}
+	.navbar{
+	border-radius: 0;
+	background-color:#456990;
+	border:none;
+	margin-bottom: 0;
+	font-size: 15px;
+	font-weight: bold;
+	letter-spacing:2px;
+	padding-right: 20px;
+	}
+	.navbar li a, .navbar .navbar-brand {
+	color: #fff !important;
+	}
+	.navbar-nav li a:hover, .navbar-nav li.active a {
+	color: teal !important;
+	background-color: #fff !important;
+	}
+	 .jumbotron {
+       background: linear-gradient(rgba(20, 20, 20, .5),rgba(20, 20, 20, .5)),url("static/img/ytu1.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 500px;
+      color: #fff;
+      padding: 100px 25px;
+      font-family: Montserrat, sans-serif;
+      margin-bottom: 0;
+  }
+  	.jumbotron h1{
+  		font-weight:300;
+  		margin-bottom: 20px;
+  	}
+  	.jumbotron p{
+  		margin-bottom: 30px;
+  	}
+	.line{
+		background-color: teal;
+		height: 1px;
+	}
+	.my-btn{
+		float: right;
+		margin-right: 20px;
+		color:white;
+		background-color: teal;
+		margin-bottom: 20px;
+	}
+	.my-btn:hover{
+		background-color:#005580;
+		color:white;
+	}
+	.thumbnail {
+	  width: 100%;
+	  height: 200px;
+      border: none;
+      border-radius: 0;
+      padding:0;
+      border-top-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      background-color:#e4fde1;
+
+    }
+  	.thumbnail img {
+      height: 200px;
+      width: 200px;
+      float: left;
+      border-top-left-radius: 20px;
+  }
+  	.thumbnail h3{
+  		color:#6b2737;
+  		padding-top: 20px;
+  		text-align: center;
+  	}
+  	.thumbnail p{
+  		margin-left: 220px;
+  		margin-right: 20px;
+  		color: teal;
+  	}
+  	.thumbnail button{
+  		position: absolute;
+  		top: 190px;
+  		right: 20px;
+  		margin-right: 20px;
+ 		
+
+  	}
+  	.item-btn{
+  		background-color: #6b2737;
+  		color:white;
+  		margin-bottom: 15px;
+  		cursor: pointer;
+  	}
+  	.item-btn:hover{
+  		background-color:#456990;
+  		color:#fff;
+  	}
+  	#section1{
+  		background-color:#114b5f;
+  		padding-top: 20px;
+  		padding-right: 20px;
+  		padding-bottom: 40px;
+
+  	}
+  	.pager li a{
+  		border:none;
+  		background-color:#e4fde1;
+  		color:#6b2737;
+  	}
+  	.pager li a:hover{
+  		background-color: #6b2737;
+  		color: #e4fde1;
+  	}
+  	#section1 h2{
+  		color:lightblue;
+  	}
+  	#section2{
+  		padding: 80px 120px;
+  		background-color: #1e5f65;
+  		color:#fff;
+  	}
+  	#section3{
+  		background-color:  #22283b;
+  		color:lightblue;
+  		padding: 20px 50px;
+  	}
+  	footer{
+  		background-color: teal;
+  		height: 100px;
+  		color:white;
+
+  	}
+  	@media only screen and (max-width: 480px){
+  		.jumbotron{
+  			height: 350px;
+  		}
+  		.jumbotron h1{
+  		font-size: 25px;
+  		font-weight:bold;
+  		}
+  		.jumbotron p{
+  			font-size: 15px;
+  		}
+  		#section1 h2{
+  			font-size: 15px;
+  		}
+  		.thumbnail img {
+  		  float: left;
+	      height: 150px;
+	      width: 100px;
+	      border-top-left-radius: 20px;
+	  }
+	  .thumbnail {
+	  width: 100%;
+	  height: 200px;
+      font-size: 10px;
+      border: none;
+      border-radius: 0;
+      border-top-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      background-color:#e4fde1;
+    }
+    .thumbnail h3{
+    	font-size: 15px; 
+    	padding-top: 10px;    
+  	}
+  	.thumbnail p{
+  		display: none;
+
+  	}
+  	.thumbnail button{
+  		position: absolute;
+  		top: 100px;
+  		right: 20px;
+  		margin-right: 10px;
+  	}
+  	#section2{
+  		padding: 20px 20px;
+  		background-color: #1e5f65;
+  		color:#fff;
+  	}
+    }
+
+#portfolio .portfolio-item{right:0;margin:0 0 15px}#portfolio .portfolio-item .portfolio-link{position:relative;display:block;max-width:400px;margin:0 auto;cursor:pointer}#portfolio .portfolio-item .portfolio-link .portfolio-hover{position:absolute;width:100%;height:100%;-webkit-transition:all ease .5s;-moz-transition:all ease .5s;transition:all ease .5s;opacity:0;background:rgba(254,209,54,.9)}#portfolio .portfolio-item .portfolio-link .portfolio-hover:hover{opacity:1}#portfolio .portfolio-item .portfolio-link .portfolio-hover .portfolio-hover-content{font-size:20px;position:absolute;top:50%;width:100%;height:20px;margin-top:-12px;text-align:center;color:#fff}#portfolio .portfolio-item .portfolio-link .portfolio-hover .portfolio-hover-content i{margin-top:-12px}#portfolio .portfolio-item .portfolio-link .portfolio-hover .portfolio-hover-content h3,
+#portfolio .portfolio-item .portfolio-link .portfolio-hover .portfolio-hover-content h4{margin:0}#portfolio .portfolio-item .portfolio-caption{max-width:400px;margin:0 auto;padding:25px;text-align:center;background-color:#fff}#portfolio .portfolio-item .portfolio-caption h4{margin:0;text-transform:none}#portfolio .portfolio-item .portfolio-caption p{font-size:16px;font-style:italic;margin:0;font-family:'Droid Serif','Helvetica Neue',Helvetica,Arial,sans-serif}#portfolio *{z-index:2}@media (min-width:767px){#portfolio .portfolio-item{margin:0 0 30px}}.portfolio-modal{padding-right:0!important}.portfolio-modal .modal-dialog{margin:1rem;max-width:100vw}.portfolio-modal .modal-content{padding:100px 0;text-align:center}.portfolio-modal .modal-content h2{font-size:3em;margin-bottom:15px}.portfolio-modal .modal-content p{margin-bottom:30px}.portfolio-modal .modal-content p.item-intro{font-size:16px;font-style:italic;margin:20px 0 30px;font-family:'Droid Serif','Helvetica Neue',Helvetica,Arial,sans-serif}.portfolio-modal .modal-content ul.list-inline{margin-top:0;margin-bottom:30px}.portfolio-modal .modal-content img{margin-bottom:30px}.portfolio-modal .modal-content button{cursor:pointer}.portfolio-modal .close-modal{position:absolute;top:25px;right:25px;width:75px;height:75px;cursor:pointer;background-color:transparent}.portfolio-modal .close-modal:hover{opacity:.3}.portfolio-modal .close-modal .lr{z-index:1051;width:1px;height:75px;margin-left:35px;-webkit-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg);background-color:#212529}.portfolio-modal .close-modal .lr .rl{z-index:1052;width:1px;height:75px;-webkit-transform:rotate(90deg);-ms-transform:rotate(90deg);transform:rotate(90deg);background-color:#212529}.timeline{position:relative;padding:0;list-style:none}.timeline:before{position:absolute;top:0;bottom:0;left:40px;width:2px;margin-left:-1.5px;content:'';background-color:#e9ecef}.timeline>li{position:relative;min-height:50px;margin-bottom:50px}.timeline>li:after,.timeline>li:before{display:table;content:' '}.timeline>li:after{clear:both}.timeline>li .timeline-panel{position:relative;float:right;width:100%;padding:0 20px 0 100px;text-align:left}.timeline>li .timeline-panel:before{right:auto;left:-15px;border-right-width:15px;border-left-width:0}.timeline>li .timeline-panel:after{right:auto;left:-14px;border-right-width:14px;border-left-width:0}.timeline>li .timeline-image{position:absolute;z-index:100;left:0;width:80px;height:80px;margin-left:0;text-align:center;color:#fff;border:7px solid #e9ecef;border-radius:100%;background-color:#fed136}.timeline>li .timeline-image h4{font-size:10px;line-height:14px;margin-top:12px}.timeline>li.timeline-inverted>.timeline-panel{float:right;padding:0 20px 0 100px;text-align:left}.timeline>li.timeline-inverted>.timeline-panel:before{right:auto;left:-15px;border-right-width:15px;border-left-width:0}.timeline>li.timeline-inverted>.timeline-panel:after{right:auto;left:-14px;border-right-width:14px;border-left-width:0}.timeline>li:last-child{margin-bottom:0}.timeline .timeline-heading h4{margin-top:0;color:inherit}.timeline .timeline-heading h4.subheading{text-transform:none}.timeline .timeline-body>p,.timeline .timeline-body>ul{margin-bottom:0}@media (min-width:768px){.timeline:before{left:50%}.timeline>li{min-height:100px;margin-bottom:100px}.timeline>li .timeline-panel{float:left;width:41%;padding:0 20px 20px 30px;text-align:right}.timeline>li .timeline-image{left:50%;width:100px;height:100px;margin-left:-50px}.timeline>li .timeline-image h4{font-size:13px;line-height:18px;margin-top:16px}.timeline>li.timeline-inverted>.timeline-panel{float:right;padding:0 30px 20px 20px;text-align:left}}@media (min-width:992px){.timeline>li{min-height:150px}.timeline>li .timeline-panel{padding:0 20px 20px}.timeline>li .timeline-image{width:150px;height:150px;margin-left:-75px}.timeline>li .timeline-image h4{font-size:18px;line-height:26px;margin-top:30px}.timeline>li.timeline-inverted>.timeline-panel{padding:0 20px 20px}}@media (min-width:1200px){.timeline>li{min-height:170px}.timeline>li .timeline-panel{padding:0 20px 20px 100px}.timeline>li .timeline-image{width:170px;height:170px;margin-left:-85px}.timeline>li .timeline-image h4{margin-top:40px}.timeline>li.timeline-inverted>.timeline-panel{padding:0 100px 20px 20px}}.team-member{margin-bottom:50px;text-align:center}.team-member img{width:225px;height:225px;border:7px solid #fff}.team-member h4{margin-top:25px;margin-bottom:0;text-transform:none}.team-member p{margin-top:0}section#contact{background-color:#212529;background-image:url(../img/map-image.png);background-repeat:no-repeat;background-position:center}section#contact .section-heading{color:#fff}section#contact .form-group{margin-bottom:25px}section#contact .form-group input,section#contact .form-group textarea{padding:20px}section#contact .form-group input.form-control{height:auto}section#contact .form-group textarea.form-control{height:248px}section#contact .form-control:focus{border-color:#fed136;box-shadow:none}section#contact ::-webkit-input-placeholder{font-weight:700;color:#ced4da;font-family:Montserrat,'Helvetica Neue',Helvetica,Arial,sans-serif}section#contact :-moz-placeholder{font-weight:700;color:#ced4da;font-family:Montserrat,'Helvetica Neue',Helvetica,Arial,sans-serif}section#contact ::-moz-placeholder{font-weight:700;color:#ced4da;font-family:Montserrat,'Helvetica Neue',Helvetica,Arial,sans-serif}section#contact :-ms-input-placeholder{font-weight:700;color:#ced4da;font-family:Montserrat,'Helvetica Neue',Helvetica,Arial,sans-serif}footer{padding:25px 0;text-align:center}footer span.copyright{font-size:90%;line-height:40px;text-transform:none;font-family:Montserrat,'Helvetica Neue',Helvetica,Arial,sans-serif}footer ul.quicklinks{font-size:90%;line-height:40px;margin-bottom:0;text-transform:none;font-family:Montserrat,'Helvetica Neue',Helvetica,Arial,sans-serif}ul.social-buttons{margin-bottom:0}ul.social-buttons li a{font-size:20px;line-height:40px;display:block;width:40px;height:40px;-webkit-transition:all .3s;-moz-transition:all .3s;transition:all .3s;color:#fff;border-radius:100%;outline:0;background-color:#212529}ul.social-buttons li a:active,ul.social-buttons li a:focus,ul.social-buttons li a:hover{background-color:#fed136}
+
+    
+
+</style>
+<body data-spy="scroll" data-target=".navbar" data-offset=50>
+ <nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">CampusShare</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Dashboard</a></li>
+        <li><a href="#section1">Items</a></li>
+        <li><a href="#section3">About</a></li>
+        <li><a href="#section4">Contact</a></li>
+                   </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#section2"><span class="glyphicon glyphicon-user"></span> Sign Up/Login</a></li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="jumbotron text-center">
+  <h1>Campus Share</h1> 
+  <p>Share each other inside the campus, Save money, Build friendships</p> 
+  <form class="form-inline">
+    <input type="email" class="form-control" size="50" placeholder="Search items" required>
+    <button type="button" class="btn btn-danger">Search</button>
+  </form>
+</div>
+
+
+  <div id="section1" class="container-fluid">
+	<h2>Most recently added items</h2>
+
+	<section class="bg-light" id="portfolio">
+ 
+       <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+        <div class="row">
+          <div class="col-md-4 col-sm-6 portfolio-item">
+            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+              <div class="portfolio-hover">
+                <div class="portfolio-hover-content">
+                  <i class="fa fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <img class="img-fluid" src="img/portfolio/01-thumbnail.jpg" alt="">
+            </a>
+            <div class="portfolio-caption">
+              <h4>Beginning Ethical Hacking.</h4>
+
+              <p class="text-muted">Illustration</p>
+              <p><strong>Link</strong> : https://www.google.com/helloworld </p>
+        <p><strong>Description</strong> : Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+      
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 portfolio-item">
+            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
+              <div class="portfolio-hover">
+                <div class="portfolio-hover-content">
+                  <i class="fa fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <img class="img-fluid" src="img/portfolio/02-thumbnail.jpg" alt="">
+            </a>
+            <div class="portfolio-caption">
+              <h4>Explore</h4>
+              <p class="text-muted">Graphic Design</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 portfolio-item">
+            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal3">
+              <div class="portfolio-hover">
+                <div class="portfolio-hover-content">
+                  <i class="fa fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <img class="img-fluid" src="img/portfolio/03-thumbnail.jpg" alt="">
+            </a>
+            <div class="portfolio-caption">
+              <h4>Finish</h4>
+              <p class="text-muted">Identity</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 portfolio-item">
+            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
+              <div class="portfolio-hover">
+                <div class="portfolio-hover-content">
+                  <i class="fa fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <img class="img-fluid" src="img/portfolio/04-thumbnail.jpg" alt="">
+            </a>
+            <div class="portfolio-caption">
+              <h4>Lines</h4>
+              <p class="text-muted">Branding</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 portfolio-item">
+            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal5">
+              <div class="portfolio-hover">
+                <div class="portfolio-hover-content">
+                  <i class="fa fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <img class="img-fluid" src="img/portfolio/05-thumbnail.jpg" alt="">
+            </a>
+            <div class="portfolio-caption">
+              <h4>Southwest</h4>
+              <p class="text-muted">Website Design</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 portfolio-item">
+            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal6">
+              <div class="portfolio-hover">
+                <div class="portfolio-hover-content">
+                  <i class="fa fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <img class="img-fluid" src="img/portfolio/06-thumbnail.jpg" alt="">
+            </a>
+            
+            <div class="portfolio-caption">
+              <h4>Window</h4>
+              <p class="text-muted">Photography</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    </div>
+ <ul class="pager">
+  <li><a href="#">Previous</a></li>
+  <li><a href="#">Next</a></li>
+</ul>
+  </div>
+</div>
+
+<div id="section2" class="container-fluid">
+<link rel="stylesheet" type="text/css" href="login.css">
+<div class="login-wrap">
+  <div class="login-html">
+    <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
+    <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
+    <div class="login-form">
+      <div class="sign-in-htm">
+        <div class="group">
+          <label for="user" class="label">Username</label>
+          <input id="user" type="text" class="input">
+        </div>
+        <div class="group">
+          <label for="pass" class="label">Password</label>
+          <input id="pass" type="password" class="input" data-type="password">
+        </div>
+       
+        <div class="group">
+          <input id="check" type="checkbox" class="check" checked>
+          <label for="check"><span class="icon"></span> Keep me Signed in</label>
+        </div>
+        <div class="group">
+          <input type="submit" class="button" value="Sign In">
+        </div>
+        <div class="hr"></div>
+        <div class="foot-lnk">
+          <a href="#forgot">Forgot Password?</a>
+        </div>
+      </div>
+      <div class="sign-up-htm">
+        <div class="group">
+          <label for="user" class="label">Username</label>
+          <input id="user" type="text" class="input">
+        </div>
+        <div class="group">
+          <label for="pass" class="label">Password</label>
+          <input id="pass" type="password" class="input" data-type="password">
+        </div>
+        <div class="group">
+          <label for="pass" class="label">Repeat Password</label>
+          <input id="pass" type="password" class="input" data-type="password">
+        </div>
+        <div class="group">
+          <label for="pass" class="label">Email Address</label>
+          <input id="pass" type="text" class="input">
+        </div>
+        <div class="group">
+          <label for="pass" class="label">StudentID</label>
+          <input id="pass" type="text" class="input">
+        </div>
+        <div class="group">
+          <input type="submit" class="button" value="Sign Up">
+        </div>
+        <div class="hr"></div>
+        <div class="foot-lnk">
+          <label for="tab-1">Already Member?</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>	
+<div id="section3" class="container-fluid text-center">
+  <h1>About Us</h1>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+  <p>We have created a fictional band website. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+</div>
+
+
+<div id="section4" class="container-fluid">
+  <h2 class="text-center">CONTACT</h2>
+  <div class="row">
+    <div class="col-sm-5">
+      <p>Contact us and we'll get back to you within 24 hours.</p>
+      <p><span class="glyphicon glyphicon-map-marker"></span> Chicago, US</p>
+      <p><span class="glyphicon glyphicon-phone"></span> +00 1515151515</p>
+      <p><span class="glyphicon glyphicon-envelope"></span> myemail@something.com</p>	   
+    </div>
+    <div class="col-sm-7 slideanim">
+      <div class="row">
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+        </div>
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+        </div>
+      </div>
+      <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <button class="btn my-btn" type="submit">Send</button>
+        </div>
+      </div>	
+    </div>
+  </div>
+</div>
+												
+
+<footer class="container-fluid text-center">
+  <a href="#myPage" title="To Top">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a>
+  <p>Bootstrap Theme Made By <a href="../index.html" title="Visit w3schools">www.w3schools.com</a></p>		
+</footer>
+</div>
+
+
+
+<script type="text/javascript" src="static/js/jquery.min.js"></script>
+<script type="text/javascript" src="static/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>

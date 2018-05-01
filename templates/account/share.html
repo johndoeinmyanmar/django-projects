@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}Share your item{% endblock %}
+
+{% block content %}
+<dir class="container-fluid bg-grey">
+
+<div class="row">
+<div class="col-sm-3"></div>
+<div class="col-sm-6">
+<div class="my-form">
+	<h1>Share what you have</h1>
+	<p>You can share anything using the following form.</p>
+<form action="." method="post" enctype="multipart/form-data" class="form-horizontal" role="form">
+  <div class="form-group">
+    <label class="control-label col-sm-4" for="name">Title:</label>
+    <div class="col-sm-6">
+      {{ itemform.title }}
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-4" for="email">Cover Photo:</label>
+    <div class="col-sm-6">
+      {{ itemform.cover }}
+    </div>
+  </div>
+    <div class="form-group">
+    <label class="control-label col-sm-4" for="photo">Link:</label>
+    <div class="col-sm-6">
+      {{ itemform.link }}
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-4" for="">Status:</label>
+    <div class="col-sm-6">
+      {{ itemform.status }}
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-4" for="">Item type:</label>
+    <div class="col-sm-6">
+      {{ itemform.item }}
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-4" for="">Description:</label>
+    <div class="col-sm-6">
+      {{ itemform.description }}
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-4 col-sm-6">
+      <button type="submit" class="btn my-btn"> Save Changes </button>
+    </div>
+  </div>
+  {% csrf_token %}
+</form>
+</div>
+</div>
+<div class="col-sm-3"></div>
+</div>
+</dir>
+
+{% endblock %}

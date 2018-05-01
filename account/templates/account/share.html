@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block title %}Share your item{% endblock %}
+
+{% block style %}
+<style type="text/css">
+  body{
+    background-color: #a9a9a9;
+  }
+  .navbar{
+  border-radius: 0;
+  background-color:#456990;
+  border:none;
+  margin-bottom: 0;
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing:2px;
+  padding-right: 20px;
+  }
+  .navbar li a, .navbar .navbar-brand {
+  color: #fff !important;
+  }
+  .navbar-nav li a:hover, .navbar-nav li.active a {
+  color: teal !important;
+  background-color: #fff !important;
+  }
+  .my-form textarea, select{
+    background-color: white;
+    border: 1px solid teal;
+  }
+
+</style>
+{% endblock %}
+{% block content %}
+<dir class="container-fluid bg-grey">
+
+<div class="row">
+<div class="col-sm-3"></div>
+<div class="col-sm-6">
+<div class="my-form">
+  {% if edit %}
+  <h1>Edit your item below</h1>
+  {% else %}
+	<h1>Share your item below</h1>
+  {% endif %}
+	<p>You can share anything using the following form.</p>
+<form action="." method="post" enctype="multipart/form-data" class="form-horizontal" role="form">
+  <div class="form-group">
+    <label class="control-label col-sm-4" for="name">Title:</label>
+    <div class="col-sm-6">
+      {{ itemform.title }}
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-4" for="email">Cover Photo:</label>
+    <div class="col-sm-6">
+      {{ itemform.cover }}
+    </div>
+  </div>
+    <div class="form-group">
+    <label class="control-label col-sm-4" for="photo">Link:</label>
+    <div class="col-sm-6">
+      {{ itemform.link }}
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-4" for="">Status:</label>
+    <div class="col-sm-6">
+      {{ itemform.status }}
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-4" for="">Item type:</label>
+    <div class="col-sm-6">
+      {{ itemform.item }}
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-4" for="">Description:</label>
+    <div class="col-sm-6">
+      {{ itemform.description }}
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-4 col-sm-6">
+      <button type="submit" class="btn my-btn"> Save Changes </button>
+    </div>
+  </div>
+  {% csrf_token %}
+</form>
+</div>
+</div>
+<div class="col-sm-3"></div>
+</div>
+</dir>
+
+{% endblock %}

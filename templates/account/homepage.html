@@ -1,0 +1,293 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block style %}
+<style type="text/css">
+	body{
+		background-color:white;
+	}
+	.navbar{
+	border-radius: 0;
+	background-color:#456990;
+	border:none;
+	margin-bottom: 0;
+	font-size: 15px;
+	font-weight: bold;
+	letter-spacing:2px;
+	padding-right: 20px;
+	}
+	.navbar li a, .navbar .navbar-brand {
+	color: #fff !important;
+	}
+	.navbar-nav li a:hover, .navbar-nav li.active a {
+	color: teal !important;
+	background-color: #fff !important;
+	}
+	 .jumbotron {
+       background: linear-gradient(rgba(20, 20, 20, .5),rgba(20, 20, 20, .5)),url("static/img/ytu1.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 500px;
+      color: #fff;
+      padding: 100px 25px;
+      font-family: Montserrat, sans-serif;
+      margin-bottom: 0;
+  }
+  	.jumbotron h1{
+  		font-weight:300;
+  		margin-bottom: 20px;
+  	}
+  	.jumbotron p{
+  		margin-bottom: 30px;
+  	}
+	.line{
+		background-color: teal;
+		height: 1px;
+	}
+	.my-btn{
+		float: right;
+		margin-right: 20px;
+		color:white;
+		background-color: teal;
+		margin-bottom: 20px;
+	}
+	.my-btn:hover{
+		background-color:#005580;
+		color:white;
+	}
+	.thumbnail {
+	  width: 100%;
+	  height: 200px;
+      border: none;
+      border-radius: 0;
+      padding:0;
+      border-top-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      background-color:#e4fde1;
+
+    }
+  	.thumbnail img {
+      height: 200px;
+      width: 200px;
+      float: left;
+      border-top-left-radius: 20px;
+  }
+  	.thumbnail h3{
+  		color:#6b2737;
+  		padding-top: 20px;
+  		text-align: center;
+  	}
+  	.thumbnail p{
+  		margin-left: 220px;
+  		margin-right: 20px;
+  		color: teal;
+  	}
+  	.thumbnail button{
+  		position: absolute;
+  		top: 190px;
+  		right: 20px;
+  		margin-right: 20px;
+ 		
+
+  	}
+  	.item-btn{
+  		background-color: #6b2737;
+  		color:white;
+  		margin-bottom: 15px;
+  		cursor: pointer;
+  	}
+  	.item-btn:hover{
+  		background-color:#456990;
+  		color:#fff;
+  	}
+  	#section1{
+  		background-color:#114b5f;
+  		padding-top: 20px;
+  		padding-right: 20px;
+  		padding-bottom: 40px;
+
+  	}
+  	.pager li a{
+  		border:none;
+  		background-color:#e4fde1;
+  		color:#6b2737;
+  	}
+  	.pager li a:hover{
+  		background-color: #6b2737;
+  		color: #e4fde1;
+  	}
+  	#section1 h2{
+  		color:lightblue;
+  	}
+  	#section2{
+  		padding: 80px 120px;
+  		background-color: #1e5f65;
+  		color:#fff;
+  	}
+  	#section3{
+  		background-color:  #22283b;
+  		color:lightblue;
+  		padding: 20px 50px;
+  	}
+    .current{
+      color: #fff;
+      font-size: 15px;
+    }
+  	footer{
+  		background-color: teal;
+  		height: 100px;
+  		color:white;
+
+  	}
+  	@media only screen and (max-width: 480px){
+  		.jumbotron{
+  			height: 350px;
+  		}
+  		.jumbotron h1{
+  		font-size: 25px;
+  		font-weight:bold;
+  		}
+  		.jumbotron p{
+  			font-size: 15px;
+  		}
+  		#section1 h2{
+  			font-size: 15px;
+  		}
+  		.thumbnail img {
+  		  float: left;
+	      height: 150px;
+	      width: 100px;
+	      border-top-left-radius: 20px;
+	  }
+	  .thumbnail {
+	  width: 100%;
+	  height: 150px;
+      font-size: 10px;
+      border: none;
+      border-radius: 0;
+      border-top-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      background-color:#e4fde1;
+    }
+    .thumbnail h3{
+    	font-size: 15px; 
+    	padding-top: 10px;    
+  	}
+  	.thumbnail p{
+  		display: none;
+
+  	}
+  	.thumbnail button{
+  		position: absolute;
+  		top: 100px;
+  		right: 20px;
+  		margin-right: 10px;
+  	}
+  	#section2{
+  		padding: 20px 20px;
+  		background-color: #1e5f65;
+  		color:#fff;
+  	}
+    }
+
+
+</style>
+{% endblock %}
+{% block title %}Homepage{% endblock %}
+
+{% block content %}
+ 
+<div class="jumbotron text-center">
+  <h1>Campus Share</h1> 
+  <p>Share each other inside the campus, Save money, Build friendships</p> 
+  <form class="form-inline">
+    <input type="email" class="form-control" size="50" placeholder="Search items" required>
+    <button type="button" class="btn btn-danger">Search</button>
+  </form>
+</div>
+
+
+  <div id="section1" class="container-fluid">
+	<h2>Most recently added items </h2>
+	<hr style="background-color:teal;height: 1px;margin-bottom: 50px;">
+  <div class="row">
+  {% for item in items %}
+    <div class="col-sm-6">
+      <div class="thumbnail">
+        <img src="/media/{{ item.cover }}" class="img-responsive">
+        <h3>{{ item.title }} <small>{{ item.owner }}</small></h3>
+        <p class="text-center"><strong>{{ item.item }}</strong> for <strong>{{ item.status }} </strong> posted at {{ item.publish }}</p>
+        {% if item.link %}
+        <p><strong>Link</strong> : {{ item.link }}</p>
+        {% else %}
+        <p><strong>Link</strong> : There is not link mentioned</p>
+        {% endif %}
+        {% if item.description %}
+        <p><strong>Description</strong> :{{ item.description }}</p>
+        {% else %}
+        <p><strong>Description</strong> :There is no description available</p>
+        {% endif %}
+        <button type="button" class="btn item-btn">I want it</button>
+      </div>
+    </div>
+    {% if forloop.counter|divisibleby:2 %}
+   </div>
+   <div class="row">
+    {% endif %}
+   {% endfor %}
+ </div>
+
+<ul class="pager">
+  <li>
+  {% if items.has_previous %}
+  <a href="?page={{ items.previous_page_number }}">Previous</a>
+  {% endif %}
+  </li>
+  <li>
+  {% if items.has_next %}
+  <a href="?page={{ items.next_page_number }}">Next</a>
+  {% endif %}
+  </li>
+</ul>
+
+<span class="current">Page {{ items.number }} of {{ items.paginator.num_pages }}</span> 
+</div>
+
+</div>
+
+
+<div id="section2" class="container-fluid text-center">
+  <h1>About Us</h1>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+  <p>We have created a fictional band website. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+</div>
+
+
+<div id="section3" class="container-fluid">
+  <h2 class="text-center">CONTACT</h2>
+  <div class="row">
+    <div class="col-sm-5">
+      <p>Contact us and we'll get back to you within 24 hours.</p>
+      <p><span class="glyphicon glyphicon-map-marker"></span> Chicago, US</p>
+      <p><span class="glyphicon glyphicon-phone"></span> +00 1515151515</p>
+      <p><span class="glyphicon glyphicon-envelope"></span> myemail@something.com</p>	   
+    </div>
+    <div class="col-sm-7 slideanim">
+      <div class="row">
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+        </div>
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+        </div>
+      </div>
+      <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <button class="btn my-btn" type="submit">Send</button>
+        </div>
+      </div>	
+    </div>
+  </div>
+</div>
+</div>
+{% endblock %}
